@@ -7,7 +7,7 @@
 <a asp-controller="Persons" asp-action="Index" class="link-hover">Back to Persons List</a>
 <h2>Create Person</h2>
 
-<div class="w-50">
+<div class="center-box">
     <form asp-controller="Persons" asp-action="Create" method="post">
 
         @*PersonName*@
@@ -55,8 +55,8 @@
                 }
                 @foreach (string gender in genders)
                 {
-                    <input type="radio" asp-for="Gender" value="@gender" />
-                    <label for="@gender">@gender</label>
+                <input type="radio" asp-for="Gender" value="@gender" />
+                <label for="@gender">@gender</label>
                 }
                 <span asp-validation-for="Gender" class="text-red"></span>
             </div>
@@ -109,14 +109,14 @@
 
                 @if (ViewBag.Errors != null)
                 {
-                    <div class="text-red ml">
-                        <ul>
-                            @foreach (string error in ViewBag.Errors)
+                <div class="text-red ml">
+                    <ul>
+                        @foreach (string error in ViewBag.Errors)
                             {
-                                <li class="ml">@error</li>
+                        <li class="ml">@error</li>
                             }
-                        </ul>
-                    </div>
+                    </ul>
+                </div>
                 }
             </div>
         </div>
@@ -124,8 +124,11 @@
     </form>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@section scripts
+ {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="~/jquery.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="~/jquery.validate.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobstrusive" asp-fallback-src="~/jquery.validate.unobtrusive.min.js"></script>
+}
