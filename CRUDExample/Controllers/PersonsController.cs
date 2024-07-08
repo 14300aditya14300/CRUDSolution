@@ -68,6 +68,7 @@ namespace CRUDExample.Controllers
             return View();
         }
 
+
         [HttpPost]
         //Url: persons/create
         [Route("[action]")]
@@ -80,7 +81,7 @@ namespace CRUDExample.Controllers
                 new SelectListItem() { Text = temp.CountryName, Value = temp.CountryID.ToString() });
 
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-                return View();
+                return View(personAddRequest);
             }
 
             //call the service method
@@ -161,6 +162,7 @@ namespace CRUDExample.Controllers
             return RedirectToAction("Index");
         }
 
+
         [Route("PersonsPDF")]
         public async Task<IActionResult> PersonsPDF()
         {
@@ -174,6 +176,7 @@ namespace CRUDExample.Controllers
                 PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
             };
         }
+
 
         [Route("PersonsCSV")]
         public async Task<IActionResult> PersonsCSV()
